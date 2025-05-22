@@ -47,10 +47,7 @@ app.post('/screenshot', async (req, res) => {
         const page = await browser.newPage();
         await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36");
         if (processedUrl.includes('amazon')) {
-            console.log('amazon');
             await page.goto(processedUrl);
-            console.log("opened wait");
-            await new Promise(resolve => setTimeout(resolve, 5000));
         } else {
             await page.goto(processedUrl, { waitUntil: 'networkidle0', timeout: 30000 });
         }
