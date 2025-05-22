@@ -1,0 +1,22 @@
+{
+  "name": "website-screenshoter-server",
+  "version": "1.0.0",
+  "description": "An Express.js API to take website screenshots and HTML snapshots using Puppeteer.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "express",
+    "puppeteer",
+    "screenshot",
+    "html-snapshot"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "puppeteer": "^24.9.0"
+  }
+}
