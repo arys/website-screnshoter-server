@@ -27,7 +27,7 @@ app.post('/screenshot', async (req, res) => {
             args: ['--no-sandbox', '--disable-setuid-sandbox'] // Recommended for running in a server environment
         });
         const page = await browser.newPage();
-        
+        await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36");
         await page.goto(processedUrl, { waitUntil: 'networkidle0' });
 
         const screenshotBuffer = await page.screenshot({ type: 'png' });
@@ -49,6 +49,8 @@ app.post('/screenshot', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-}); 
+});
+
+server.timeout = 360000; // 6 minutes, e.g. 5 minutes for puppeteer + 1 minute buffer 
