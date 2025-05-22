@@ -24,7 +24,11 @@ app.post('/screenshot', async (req, res) => {
     let browser;
     try {
         browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox'] // Recommended for running in a server environment
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            defaultViewport: {
+                width: 1920,
+                height: 1080
+            }
         });
         const page = await browser.newPage();
         await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36");
